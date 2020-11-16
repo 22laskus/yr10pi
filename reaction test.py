@@ -1,6 +1,12 @@
 from sense_hat import SenseHat
 import time
- 
+import random
+
+
+
+
+
+
 
 sense = SenseHat()
 sense.clear()
@@ -15,6 +21,11 @@ sense.set_pixel(x,y,blue)
 
 
 while True:
+    
+for x in range(1):
+    print(random.randint(1,6))
+    time.sleep(2.4)
+ 
     for event in sense.stick.get_events():
         # check if joystick is pressed
         if event.action == 'pressed':
@@ -31,9 +42,15 @@ while True:
                 else:
                     y=y+1
             elif event.direction == 'left':
-                x=x-1
+                if x==0:
+                    x=0
+                else:
+                    x=x-1
             elif event.direction == 'right':
-                x=x+1
+                if x==7:
+                    x=7
+                else:
+                    x=x+1
             elif event.direction == 'middle':
                 sense.set_pixel(4,4,blue)
         elif event.action == 'released':
